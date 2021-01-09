@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Proiect_Delegatii.FilialeCompanie"
+             BackgroundColor="#374147">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="20">
+                <Editor Placeholder="Judet" PlaceholderColor="#aeb0ae" Margin="20"
+                    Text="{Binding Judet}"
+                        TextColor="#fae887"
+                    HeightRequest="50" />
+                <Editor Placeholder="Tara" PlaceholderColor="#aeb0ae" Margin="20"
+                    Text="{Binding Tara}"
+                        TextColor="#fae887"
+                    HeightRequest="50" />
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Button Text="Save"
+                        Clicked="OnSaveButtonClicked" />
+                    <Button Grid.Column="1"
+                        Text="Delete"
+                        Clicked="OnDeleteButtonClicked"/>
+                    <ListView Grid.Row="1" Grid.ColumnSpan="2" x:Name="listView"
+                                        Margin="20"
+                                        ItemSelected="OnListViewItemSelected">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextCell Text="{Binding Judet}"
+                                      TextColor="#f2d216"
+                                      Detail="{Binding Tara}"
+                                      DetailColor="#fffced"/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

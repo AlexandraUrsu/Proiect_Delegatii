@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Proiect_Delegatii.ListDelegatie"
+             BackgroundColor="#fffced">
+    <ContentPage.Content >
+        <StackLayout Margin="20">
+            <Editor Placeholder="Introdu locatia delegatiei"
+                    Text="{Binding Descriere}"
+                     HeightRequest="100" />
+            <Button Text="Angajati" Clicked="OnChooseButtonClicked"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Button Text="Save"
+                        Clicked="OnSaveButtonClicked" />
+                <Button Grid.Column="1"
+                        Text="Delete"
+                        Clicked="OnDeleteButtonClicked"/>
+                <ListView Grid.Row="1" Grid.ColumnSpan="2" x:Name="listView" Margin="20">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding Nume}"
+                                      TextColor="#374147"
+                                    Detail="{Binding Prenume}"
+                                      DetailColor="#aeb0ae"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Proiect_Delegatii.MainPage"
+             BackgroundColor="#fffced">
+
+    <StackLayout>
+        <Frame BackgroundColor="#fae887" Padding="24" CornerRadius="0">
+            <Label Text="Bun venit la Delegatii!" HorizontalTextAlignment="Center" TextColor="#948829" FontSize="36"/>
+        </Frame>
+        <Label Text="Documentele de care ai nevoie pentru delegatia ta" FontSize="Title" Padding="30,10,30,10"/>
+        <Label Text="Copie buletin, asigurare, ordin de deplasare" FontSize="16" Padding="30,0,30,0"/>
+        <Label Text="Nu uita sa pastrezi toate facturile pentru decontare!" FontSize="Subtitle" Padding="30,10,30,10"/>
+        <Label FontSize="16" Padding="30,24,30,0">
+            <Label.FormattedText>
+                <FormattedString>
+                    <FormattedString.Spans>
+                        <Span Text="Prevederi legale pentru deplasari: "/>
+                        <Span Text="https://ced.ro/articole/2020/ordin-de-deplasare-delegatie-diurna-interna-si-externa/" FontAttributes="Bold"/>
+                        <Span Text="&#10;Informatii Covid: "/>
+                        <Span Text="https://www.worldometers.info/coronavirus/" FontAttributes="Bold"/>
+                        <Span Text="&#10;Afla cum va fi timpul in orasul unde calatoresti: "/>
+                        <Span Text="https://www.accuweather.com/" FontAttributes="Bold"/>
+                    </FormattedString.Spans>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+    </StackLayout>
+
+</ContentPage>
