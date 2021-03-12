@@ -12,6 +12,8 @@ namespace Proiect_Delegatii.Models
         public int ID { get; set; }
         public string Nume { get; set; }
         public string Prenume { get; set; }
+        public string Manager { get; set; }
+        public string Filiala { get; set; }
         [OneToMany]
         public List<ListAngajat> ListAngajati { get; set; }
     }

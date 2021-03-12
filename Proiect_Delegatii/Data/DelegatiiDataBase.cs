@@ -16,13 +16,15 @@ namespace Proiect_Delegatii.Data
             _database.CreateTableAsync<Delegatie>().Wait();
             _database.CreateTableAsync<Angajat>().Wait();
             _database.CreateTableAsync<ListAngajat>().Wait();
-            _database.CreateTableAsync<Filiala>().Wait();
-            _database.CreateTableAsync<ListFiliala>().Wait();
-
+            
         }
         public Task<List<Delegatie>> GetDelegatieAsync()
         {
             return _database.Table<Delegatie>().ToListAsync();
+        }
+        public Task<List<Angajat>> GetAngajatAsync()
+        {
+            return _database.Table<Angajat>().ToListAsync();
         }
         public Task<Delegatie> GetDelegatieAsync(int id)
         {
@@ -30,6 +32,7 @@ namespace Proiect_Delegatii.Data
             .Where(i => i.ID == id)
            .FirstOrDefaultAsync();
         }
+     
         public Task<int> SaveDelegatieAsync(Delegatie slist)
         {
             if (slist.ID != 0)
@@ -85,47 +88,6 @@ namespace Proiect_Delegatii.Data
             + " inner join ListAngajat LA"
             + " on A.ID = LA.AngajatID where LA.DelegatieID = ?",
             delegatieid);
-        }
-
-        public Task<int> SaveFilialaAsync(Filiala filiala)
-        {
-            if (filiala.ID != 0)
-            {
-                return _database.UpdateAsync(filiala);
-            }
-            else
-            {
-                return _database.InsertAsync(filiala);
-            }
-        }
-        public Task<int> DeleteFilialaAsync(Filiala filiala)
-        {
-            return _database.DeleteAsync(filiala);
-        }
-        public Task<List<Filiala>> GetFilialaAsync()
-        {
-            return _database.Table<Filiala>().ToListAsync();
-        }
-
-        public Task<int> SaveListFilialaAsync(ListFiliala lista)
-        {
-            if (lista.ID != 0)
-            {
-                return _database.UpdateAsync(lista);
-            }
-            else
-            {
-                return _database.InsertAsync(lista);
-            }
-        }
-
-        public Task<List<Angajat>> GetListFilialeAsync(int angajatid)
-        {
-            return _database.QueryAsync<Angajat>(
-            "select F.ID, F.Judet, F.Tara from Filiala F"
-            + " inner join ListFiliala LF"
-            + " on F.ID = LF.FilialaID where LA.AngajatID = ?",
-            angajatid);
         }
     }
 }

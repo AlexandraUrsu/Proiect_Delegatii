@@ -3,11 +3,30 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Proiect_Delegatii.ListDelegatie"
              BackgroundColor="#fffced">
-    <ContentPage.Content >
+    <ContentPage.Content xmlns:local="clr-namespace:Proiect_Delegatii">
+        <ScrollView>
         <StackLayout Margin="20">
-            <Editor Placeholder="Introdu locatia delegatiei"
-                    Text="{Binding Descriere}"
-                     HeightRequest="100" />
+            <Editor Placeholder="Locatia delegatiei"
+                    Text="{Binding Locatie}"
+                     HeightRequest="70">
+                <Editor.Behaviors>
+                    <local:ValidationBehaviour />
+                </Editor.Behaviors>
+            </Editor>
+            <Editor Placeholder="Data plecarii"
+                    Text="{Binding Data_Plecare}"
+                     HeightRequest="70">
+                <Editor.Behaviors>
+                    <local:ValidationBehaviour />
+                </Editor.Behaviors>
+            </Editor>
+            <Editor Placeholder="Data intoarcerii"
+                    Text="{Binding Data_Intoarcere}"
+                     HeightRequest="70">
+                <Editor.Behaviors>
+                    <local:ValidationBehaviour />
+                </Editor.Behaviors>
+            </Editor>
             <Button Text="Angajati" Clicked="OnChooseButtonClicked"/>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -35,5 +54,6 @@
                 </ListView>
             </Grid>
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

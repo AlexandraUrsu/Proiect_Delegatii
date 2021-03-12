@@ -6,12 +6,27 @@
     <ContentPage.Content xmlns:local="clr-namespace:Proiect_Delegatii">
         <StackLayout Margin="20">
             <Editor Placeholder="Introdu locatia delegatiei"
-                    Text="{Binding Descriere}"
-                     HeightRequest="100" >
+                    Text="{Binding Locatie}"
+                     HeightRequest="70" >
                 <Editor.Behaviors>
                     <local:ValidationBehaviour />
                 </Editor.Behaviors>
             </Editor>
+            <Editor Placeholder="Introdu data plecarii"
+                    Text="{Binding Data_Plecare}"
+                     HeightRequest="70" >
+                <Editor.Behaviors>
+                    <local:ValidationBehaviour />
+                </Editor.Behaviors>
+            </Editor>
+            <Editor Placeholder="Introdu data intoarcerii"
+                    Text="{Binding Data_Intoarcere}"
+                     HeightRequest="70" >
+                <Editor.Behaviors>
+                    <local:ValidationBehaviour />
+                </Editor.Behaviors>
+            </Editor>
+            <Button Text="Angajati" Clicked="OnChooseButtonClicked"/>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -24,7 +39,6 @@
                         Text="Delete"
                         HeightRequest="50"
                         Clicked="OnDeleteButtonClicked"/>
-                
             </Grid>
         </StackLayout>
     </ContentPage.Content>

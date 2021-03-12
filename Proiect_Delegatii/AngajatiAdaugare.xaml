@@ -1,17 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Proiect_Delegatii.FilialeCompanie"
+             x:Class="Proiect_Delegatii.AngajatiAdaugare"
              BackgroundColor="#374147">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Margin="20">
-                <Editor Placeholder="Judet" PlaceholderColor="#aeb0ae" Margin="20"
-                    Text="{Binding Judet}"
+                <Editor Placeholder="Nume" PlaceholderColor="#aeb0ae" Margin="20"
+                    Text="{Binding Nume}"
                         TextColor="#fae887"
                     HeightRequest="50" />
-                <Editor Placeholder="Tara" PlaceholderColor="#aeb0ae" Margin="20"
-                    Text="{Binding Tara}"
+                <Editor Placeholder="Preume" PlaceholderColor="#aeb0ae" Margin="20"
+                    Text="{Binding Prenume}"
+                        TextColor="#fae887"
+                    HeightRequest="50" />
+                <Editor Placeholder="Manager" PlaceholderColor="#aeb0ae" Margin="20"
+                    Text="{Binding Manager}"
+                        TextColor="#fae887"
+                    HeightRequest="50" />
+                <Editor Placeholder="Filiala" PlaceholderColor="#aeb0ae" Margin="20"
+                    Text="{Binding Filiala}"
                         TextColor="#fae887"
                     HeightRequest="50" />
                 <Grid>
@@ -28,18 +36,6 @@
                     <Button Grid.Column="1"
                         Text="Delete"
                         Clicked="OnDeleteButtonClicked"/>
-                    <ListView Grid.Row="1" Grid.ColumnSpan="2" x:Name="listView"
-                                        Margin="20"
-                                        ItemSelected="OnListViewItemSelected">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <TextCell Text="{Binding Judet}"
-                                      TextColor="#f2d216"
-                                      Detail="{Binding Tara}"
-                                      DetailColor="#fffced"/>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
                 </Grid>
             </StackLayout>
         </ScrollView>

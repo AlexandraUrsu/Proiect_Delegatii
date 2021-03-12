@@ -11,41 +11,33 @@ using Xamarin.Forms.Xaml;
 namespace Proiect_Delegatii
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DelegatieLista : ContentPage
+    public partial class AngajatiAdaugare : ContentPage
     {
-        public DelegatieLista()
+        Delegatie dl;
+
+        public AngajatiAdaugare(Delegatie del)
         {
             InitializeComponent();
-        }
-        async void OnChooseButtonClicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new AngajatiCompanie((Delegatie)
-           this.BindingContext)
-            {
-                BindingContext = new Angajat()
-            });
-
+            dl = del;
         }
 
         async void OnSaveButtonClicked(object sender, EventArgs e)
         {
-            var slist = (Delegatie)BindingContext;
-            slist.Data = DateTime.UtcNow;
-            await App.Database.SaveDelegatieAsync(slist);
+            var angajat = (Angajat)BindingContext;
+            await App.Database.SaveAngajatAsync(angajat);
             await Navigation.PopAsync();
         }
         async void OnDeleteButtonClicked(object sender, EventArgs e)
         {
-            var slist = (Delegatie)BindingContext;
-            await App.Database.DeleteDelegatieAsync(slist);
+            var angajat = (Angajat)BindingContext;
+            await App.Database.DeleteAngajatAsync(angajat);
             await Navigation.PopAsync();
         }
-
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            var del = (Delegatie)BindingContext;
 
         }
+
     }
 }

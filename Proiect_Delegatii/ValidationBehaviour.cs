@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
+using Proiect_Delegatii.Data;
 
 namespace Proiect_Delegatii
 {
@@ -19,8 +20,7 @@ namespace Proiect_Delegatii
         }
         void OnEntryTextChanged(object sender, TextChangedEventArgs args)
         {
-            ((Editor)sender).BackgroundColor =
-            string.IsNullOrEmpty(args.NewTextValue) ? Color.Red : Color.Default;
+            ((Editor)sender).BackgroundColor = string.IsNullOrEmpty(args.NewTextValue) ? Color.Red : Color.Default;
         }
     }
- }
+}

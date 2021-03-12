@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -20,42 +19,27 @@ namespace Proiect_Delegatii
             InitializeComponent();
             dl = del;
         }
-
-        async void OnSaveButtonClicked(object sender, EventArgs e)
-        {
-            var angajat = (Angajat)BindingContext;
-            await App.Database.SaveAngajatAsync(angajat);
-            listView.ItemsSource = await App.Database.GetAngajatiAsync();
-        }
-        async void OnDeleteButtonClicked(object sender, EventArgs e)
-        {
-            var angajat = (Angajat)BindingContext;
-            await App.Database.DeleteAngajatAsync(angajat);
-            listView.ItemsSource = await App.Database.GetAngajatiAsync();
-        }
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            listView.ItemsSource = await App.Database.GetAngajatiAsync();
-            
+            listView.ItemsSource = await App.Database.GetAngajatAsync();
         }
 
+        async void OnAngajatAddedClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new AngajatiAdaugare(dl)
+            {
+                BindingContext = new Angajat()
+            });
+        }
         async void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-
-            Angajat a;
             if (e.SelectedItem != null)
             {
-                a = e.SelectedItem as Angajat;
-                var la = new ListAngajat()
+                await Navigation.PushAsync(new AngajatiAdaugare(dl)
                 {
-                    DelegatieID = dl.ID,
-                    AngajatID = a.ID
-                };
-                await App.Database.SaveListAngajatAsync(la);
-                a.ListAngajati = new List<ListAngajat> { la };
-
-                await Navigation.PopAsync();
+                    BindingContext = e.SelectedItem as Angajat
+                });
             }
         }
     }
