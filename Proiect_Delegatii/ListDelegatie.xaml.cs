@@ -49,5 +49,34 @@ namespace Proiect_Delegatii
 
             listView.ItemsSource = await App.Database.GetListAngajatiAsync(del.ID);
         }
+        private async void OnSelect(object sender, SelectedItemChangedEventArgs e)
+        {
+            Angajat a;
+            var del = (Delegatie)BindingContext;
+            if (e.SelectedItem != null)
+            {
+                a = e.SelectedItem as Angajat;
+                var actionSheet = await DisplayActionSheet(a.Nume + " " + a.Prenume, "Cancel", null, "Stergere");
+
+                switch (actionSheet)
+                {
+                    case "Cancel":
+
+                        // Do Something when 'Cancel' Button is pressed
+
+                        break;
+
+                    case "Stergere":
+                        Task<ListAngajat> taskListAngajat = App.Database.GetListAngajatAsync(del.ID, a.ID);
+                        ListAngajat listang = taskListAngajat.Result;
+                        await App.Database.DeleteListAngajatAsync(listang);
+                        if (listang != null)
+                            DisplayAlert("Sters cu succes", "Angajatul "+a.Nume+" "+a.Prenume+" a fost strers din delegatia "+del.ID, "Ok");
+                        else DisplayAlert("Failed", "Sregerea nu se poate realiza", "Ok");
+                        Navigation.PopAsync();
+                        break;
+                }
+            }
+        }
     }
 }

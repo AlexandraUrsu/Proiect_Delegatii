@@ -42,10 +42,11 @@
                 <Button Grid.Column="1"
                         Text="Delete"
                         Clicked="OnDeleteButtonClicked"/>
-                <ListView Grid.Row="1" Grid.ColumnSpan="2" x:Name="listView" Margin="20">
+                <ListView Grid.Row="1" Grid.ColumnSpan="2" x:Name="listView" Margin="20" ItemSelected="OnSelect">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <TextCell Text="{Binding Nume}"
+                            <TextCell 
+                                      Text="{Binding Nume}"
                                       TextColor="#374147"
                                     Detail="{Binding Prenume}"
                                       DetailColor="#aeb0ae"/>

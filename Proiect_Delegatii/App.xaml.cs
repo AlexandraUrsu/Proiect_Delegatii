@@ -29,7 +29,7 @@ namespace Proiect_Delegatii
         {
             InitializeComponent();
             DependencyService.Register<Delegatie>();
-            MainPage = new AppShell();
+            MainPage = new LoginPage();
         }
 
         protected override void OnStart()

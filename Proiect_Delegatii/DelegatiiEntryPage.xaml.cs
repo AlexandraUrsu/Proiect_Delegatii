@@ -1,4 +1,5 @@
-﻿using Proiect_Delegatii.Models;
+﻿using Proiect_Delegatii.Data;
+using Proiect_Delegatii.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,6 +38,20 @@ namespace Proiect_Delegatii
                 {
                     BindingContext = e.SelectedItem as Delegatie
                 });
+            }
+        }
+
+        async void OnTextChanged(object sender, EventArgs e)
+        {
+            SearchBar searchBar = (SearchBar)sender;
+            if (searchBar.Text.Equals(""))
+            {
+                Navigation.PopAsync();
+                Navigation.PushAsync(new DelegatiiEntryPage());
+            }
+            else
+            {
+                listView.ItemsSource = await App.Database.GetSearchResults(searchBar.Text);
             }
         }
     }

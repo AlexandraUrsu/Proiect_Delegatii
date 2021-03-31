@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Proiect_Delegatii.UserAdaugare">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Margin="20">
+                <Editor Placeholder="Username" PlaceholderColor="#aeb0ae" Margin="20"
+                    Text="{Binding Username}"
+                        TextColor="Black"
+                    HeightRequest="50" />
+                <Editor Placeholder="Parola" PlaceholderColor="#aeb0ae" Margin="20"
+                    Text="{Binding Parola}"
+                        TextColor="Black"
+                    HeightRequest="50" />
+                <Editor Placeholder="User/Administrator" PlaceholderColor="#aeb0ae" Margin="20"
+                    Text="{Binding Rol}"
+                        TextColor="Black"
+                    HeightRequest="50" />
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Button Text="Save"
+                        Clicked="OnSaveButtonClicked" />
+                    <Button Grid.Column="1"
+                        Text="Delete"
+                        Clicked="OnDeleteButtonClicked"/>
+                </Grid>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

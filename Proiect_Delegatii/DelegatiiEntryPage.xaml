@@ -7,6 +7,7 @@
         <ToolbarItem Text="Adauga o delegatie" Clicked="OnDelegatieAddedClicked" />
     </ContentPage.ToolbarItems>
     <StackLayout>
+        <SearchBar Placeholder="Cauta delegatie" TextChanged="OnTextChanged"></SearchBar>
         <ListView x:Name="listView" 
               Margin="20" 
               ItemSelected="OnListViewItemSelected">

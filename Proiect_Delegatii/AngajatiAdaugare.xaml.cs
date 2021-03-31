@@ -38,6 +38,8 @@ namespace Proiect_Delegatii
             base.OnAppearing();
 
         }
+        
+
 
     }
 }

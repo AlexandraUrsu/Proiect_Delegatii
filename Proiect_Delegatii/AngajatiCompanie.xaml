@@ -6,19 +6,21 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Adauga un angajat" Clicked="OnAngajatAddedClicked" />
     </ContentPage.ToolbarItems>
+    
     <StackLayout>
-            <ListView x:Name="listView" 
+        <SearchBar Placeholder="Cauta angajat" TextChanged="OnTextChanged"></SearchBar>
+        <ListView x:Name="listView" 
               Margin="20" 
-              ItemSelected="OnListViewItemSelected">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <TextCell
+              ItemSelected="Handle_Selected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell
                           TextColor="White" 
                           Text="{Binding Nume}"
                            DetailColor="#aeb0ae"
                           Detail="{Binding Prenume}"/>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </StackLayout>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
 </ContentPage>
